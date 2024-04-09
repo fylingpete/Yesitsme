@@ -4,10 +4,18 @@
     <title>TOTP Setup</title>
 </head>
 <body>
-    <h1>Scan or Enter Secret</h1>
-    <img src="/templates/qr_code.png" alt="QR Code">ç
-    <p>Shared Secret: {{ secret }}</p>
-    <p>Copy the secret or scan the QR code into your authenticator app.</p> 
-    <a href="/generate">Proceed to Code Generator</a>
+    <h1>YES IT'S ME!</h1> 
+    <h2>Scan the Barcode with every Authenticator App or use the Code Generator</h2> 
+
+    {% if secret %}
+        <p>Shared Secret: {{ secret }}</p>
+        <a href="{{ url_for('generate_code', secret=secret) }}">Proceed to Code Generator</a>
+        <img src="/static/{{ qr_code }}" alt="QR Code">  
+    {% elif error %}
+        <p style="color: red;">{{ error }}</p> 
+    {% else %}
+        <p>Please have your buddy access this same page and enter the agreed-upon key.</p>
+    {% endif %}
 </body>
 </html>
+
