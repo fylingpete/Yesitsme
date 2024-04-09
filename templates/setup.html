@@ -9,8 +9,9 @@
 
     {% if secret %}
         <p>Shared Secret: {{ secret }}</p>
-        <a href="{{ url_for('generate_code', secret=secret) }}">Proceed to Code Generator</a>
-        <img src="/static/{{ qr_code }}" alt="QR Code">  
+        <a href="{{ url_for('generate_code', secret=secret) }}">Proceed to Code Generator</a> 
+        <p></p> <p></p> <p></p> <p></p> 
+        <img src="/static/{{ qr_code }}" alt="QR Code" style="width: 10%; height: auto;">  
     {% elif error %}
         <p style="color: red;">{{ error }}</p> 
     {% else %}
@@ -18,4 +19,3 @@
     {% endif %}
 </body>
 </html>
-
